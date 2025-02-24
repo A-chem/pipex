@@ -28,9 +28,14 @@ void process_1(char **av, char **env, t_data *data)
     close(data->fd[1]);
     check_exec_cmd(av[2], env);
 }
-
+void f()
+{
+    system ("leaks pipex");
+    system ("lsof -c pipex");
+}
 void    pipex(char **av, char **env, t_data *data)
 {
+   //atexit (f);
     pid_t child_1;
     pid_t child_2;
 
@@ -53,9 +58,7 @@ void    pipex(char **av, char **env, t_data *data)
 }
 int main(int ac, char **av, char **env) 
 {
- 
     t_data data;
-    
 
     if (!*env)
         handle_error("envp failed");

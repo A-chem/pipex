@@ -1,7 +1,7 @@
 #include "../include/pipex.h"
 
 
-char *fet_path(char **env)
+static char *fet_path(char **env)
 {
     int i;
     char *path;
@@ -18,7 +18,7 @@ char *fet_path(char **env)
     }
     return (NULL);
 }
-char *ft_found_cmd (char *cmd, char **path)
+static char *ft_found_cmd (char *cmd, char **path)
 {
     int i;
     char *cmd_path_join;
@@ -30,7 +30,10 @@ char *ft_found_cmd (char *cmd, char **path)
         cmd_path_join = ft_strjoin(path[i], "/");
         cmd_path_join_2 = ft_strjoin(cmd_path_join, cmd);
         if (access(cmd_path_join_2, X_OK) == 0)
+        {
+            free(cmd_path_join);
             return (cmd_path_join_2);
+        }
         i++;
     }
     return NULL;
@@ -46,20 +49,16 @@ void    check_exec_cmd(char *cmd, char **env)
     cmd_split = ft_split(cmd, ' ');
     if (!cmd_split || !path)
         exit(1);
-    if (cmd_split[0][0] == '/' && cmd_split[0][0] != '/')
+    if (cmd_split[0][0] == '/' || cmd_split[0][0] == '.')
         ft_exec (cmd_split[0], cmd_split, env);
-    else if (cmd_split[0][0] == '/' && cmd_split[0][1] == '/')
-    {
-        perror("Command not found");
-        exit(1);
-    }
-    path_cmd = ft_found_cmd(cmd_split[0], path);
     if (access (cmd_split[0], X_OK) == 0)
         path_cmd = cmd_split[0];
     else
      path_cmd = ft_found_cmd(cmd_split[0], path);
     if (!path_cmd)
     {
+        free(path);
+        free(cmd_split);
         perror("Command not found");
         exit(1);
     }
