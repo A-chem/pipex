@@ -1,7 +1,7 @@
 NAME = pipex
-CC = cc
+CC = gcc
 CFLAGS = #-Wall -Wextra -Werror
-SRC = ./Mandatory/src/pipex.c ./Mandatory/utils/ft_split.c ./Mandatory/utils/ft_strjoin.c ./Mandatory/utils/ft_strlen.c ./Mandatory/utils/ft_strncmp.c  ./Mandatory/src/check_exec_cmd.c 
+SRC = ./src/pipex.c ./src/check_cmd.c ./src/handle_error.c ./utils/handle_error.c ./utils/ft_split.c ./utils/ft_strlen.c  ./utils/ft_strncmp.c ./utils/ft_strjoin.c
 OBJ = $(SRC:.c=.o)
 
 GREEN       := \033[32m
@@ -20,7 +20,7 @@ $(NAME): $(OBJ)
 	@echo "$(OK_SIGN) $(GREEN)Build successful: $(NAME)$(RESET)"
 
 
-%.o: %.c ./Mandatory/include/pipex.h
+%.o: %.c ./include/pipex.h
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(WORKING) $(CYAN)Compiling: $<$(RESET)"
 
