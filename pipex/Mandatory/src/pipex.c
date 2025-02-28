@@ -17,8 +17,8 @@ void process_1(char **av, char **env, t_data *data)
     ft_close(data->fd[0]);
     data->fd_in = open(av[1], O_RDONLY);
     handle_errors(data->fd_in, "Error Opening File");
-    if (data->fd_in != -1 && av[1] != NULL && av[1][0] != '/') 
-        ft_unlink(av[1]);
+   /* if (data->fd_in != -1 && av[1] != NULL && av[1][0] != '/') 
+        ft_unlink(av[1]);*/
     ft_dup2(data->fd_in, 0, data->fd[1], "Dup Failed");
     ft_close(data->fd_in);
     ft_dup2(data->fd[1], 1, data->fd_in, "Dup Failed");
@@ -28,9 +28,12 @@ void process_1(char **av, char **env, t_data *data)
 
 void    pipex(char **av, char **env, t_data *data)
 {
+  
     pid_t child_1;
     pid_t child_2;
 
+    child_1 = 0;
+    child_2 = 0;
     ft_pipe(&data, "Pipe Failed");
     child_1 = ft_fork(child_1, "Fork 1 Failed");
     if (child_1 == 0)
@@ -49,16 +52,16 @@ int main(int ac, char **av, char **env)
 {
     t_data data;
 
- /*if (ac != 5)
+ if (ac != 5)
     {
-        perror("Wrong numbre of arguments");
+        ft_putstr("Wrong numbre of arguments");
         exit(1);
     }
      if (!*env || !env)
      {
-        perror("env failed");
+        ft_putstr("env failed");
         exit(1);
-     }*/
+     }
    pipex(av, env, &data);
-   //check_exec_cmd(av[1], env);
+
 }

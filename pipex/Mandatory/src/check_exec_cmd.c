@@ -30,10 +30,7 @@ char *ft_found_cmd (char *cmd, char **path)
         cmd_path_join_2 = ft_strjoin(cmd_path_join, cmd);
          free(cmd_path_join);
         if (access(cmd_path_join_2, X_OK) == 0)
-        {
-           
             return (cmd_path_join_2);
-        }
         free(cmd_path_join_2);
         i++;
     }

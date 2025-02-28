@@ -46,7 +46,7 @@ void pars_cmd_2(char **cmd_split, char **env)
 
 void pars_cmd_3(char **cmd_split, char **env)
 { 
-     char **path;
+    char **path;
     char *path_cmd;
 
     path = ft_split(fet_path(env), ':');
@@ -55,14 +55,14 @@ void pars_cmd_3(char **cmd_split, char **env)
             write(2, "PATH not found in environment\n", 28);
             exit(1);
         }
-
         path_cmd = ft_found_cmd(cmd_split[0], path);
         if (!path_cmd)
         {
-            write(2, "No such file or directory\n", 26);
+            ft_putstr("Command not found: ");
+            ft_putstr(cmd_split[0]);
+            ft_putstr("\n");
             exit(1);
         }
-
         if (execve(path_cmd, cmd_split, env) == -1)
         {
             ft_putstr("Execve failed");
