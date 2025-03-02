@@ -27,7 +27,7 @@ void    ft_close(int fd);
 void	ft_dup2(int fd_src, int fd_dest, char *str);
 void    ft_wait(void);
 void    ft_here_doc(char **av, t_data *data);
-void    ft_process(char *cmd, char **env, bool condition, t_data *data);
+void    ft_process(char *cmd, char **env, bool condition, t_data *data, int i, char **av);
 void    check_exec_cmd(char *cmd, char **env);
 int     ft_check_path_cmd(char *cmd);
 char    *ft_found_cmd (char *cmd, char **path);

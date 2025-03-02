@@ -7,7 +7,7 @@ void ft_wait(int pid)
 	terminated_pid = waitpid(pid, NULL, 0);
 	if (terminated_pid == -1)
 	{
-		ft_putstr("Error waiting");
+		ft_putstr("Error waiting\n");
 		exit(1);
 	}
 }
@@ -15,7 +15,7 @@ void ft_unlink(char *str)
 {
 	if(unlink(str) == -1)
 	{
-		ft_putstr("Error Unlinking File");
+		ft_putstr("Error Unlinking File\n");
 		exit(1);
 	}
 }

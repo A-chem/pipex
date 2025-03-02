@@ -1,4 +1,4 @@
-#include "../include/pipex.h"
+#include "../include/pipex_bonus.h"
 static size_t    word_count(char const *s, char sep)
 {
     size_t    i;

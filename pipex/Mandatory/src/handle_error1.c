@@ -26,7 +26,7 @@ void ft_close(int fd)
 {
     if(close(fd) == -1)
     {
-        ft_putstr("Error closing file");
+        ft_putstr("Error closing file\n");
         exit(1);
     }
 }
