@@ -2,12 +2,12 @@
 
 void process_2(char **av, char **env, t_data *data)
 {
-    char **cmd = ft_split(av[3], ' ');
+
     ft_close(data->fd[1]); 
     data->fd_out = open(av[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
     if (data->fd_out == -1)
     {
-        perror(cmd[0]);
+        perror(av[4]);
         exit (1);
     }
     ft_dup2(data->fd[0], 0, data->fd_out, "Dup2 Failed\n");
@@ -19,16 +19,15 @@ void process_2(char **av, char **env, t_data *data)
 
 void process_1(char **av, char **env, t_data *data)
 {
-    char **cmd = ft_split(av[2], ' ');
     ft_close(data->fd[0]);
     data->fd_in = open(av[1], O_RDONLY);
     if (data->fd_in == -1)
     {   
-        perror(cmd[0]);
+        perror(av[1]);
         exit (1);
     }
-   /* if (data->fd_in != -1 && av[1] != NULL && av[1][0] != '/') 
-        ft_unlink(av[1]);*/
+    if (data->fd_in != -1 && av[1] != NULL && av[1][0] != '/') 
+        ft_unlink(av[1]);
     ft_dup2(data->fd_in, 0, data->fd[1], "Dup Failed\n");
     ft_close(data->fd_in);
     ft_dup2(data->fd[1], 1, data->fd_in, "Dup Failed\n");
@@ -56,10 +55,15 @@ void    pipex(char **av, char **env, t_data *data)
     ft_wait(child_1);
     ft_wait(child_2);
 }
-
+void f()
+{
+    system ("leaks pipex");
+    system ("lsof -c pipex");
+}
 
 int main(int ac, char **av, char **env)
 {
+   //atexit(f);
     t_data data;
 
  if (ac != 5)

@@ -39,13 +39,11 @@ char *ft_found_cmd (char *cmd, char **path)
 void check_exec_cmd(char *cmd, char **env)
 {
     char **cmd_split;
-   
-
-
     cmd_split = ft_split(cmd, ' ');
     pars_cmd_1(cmd);
     if (ft_check_path_cmd(cmd) == 1)
         pars_cmd_2(cmd_split, env);
     else
         pars_cmd_3(cmd_split, env);
+    ft_double_free(cmd_split);
 }

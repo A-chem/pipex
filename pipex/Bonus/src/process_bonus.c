@@ -2,7 +2,7 @@
 
 void ft_process(char *cmd, char **env, bool condition, t_data *data, int i, char **av)
 {
-    int child;
+    int child = 0;
     ft_pipe(&data, "Pipe Failed");
     child = ft_fork(child, "Fork 1 Failed");
     if (child == 0)

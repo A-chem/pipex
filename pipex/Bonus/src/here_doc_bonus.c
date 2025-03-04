@@ -29,7 +29,7 @@ void ft_read_input(char **av, t_data *data)
 
 void ft_here_doc(char **av, t_data *data)
 {
-    int child;
+    int child = 0;
 
     ft_pipe(&data, "Pipe Failed");
     child = ft_fork(child, "Fork  Failed");

@@ -33,6 +33,7 @@ char *fet_path(char **env);
 void pars_cmd_1(char *cmd);
 void pars_cmd_2(char **cmd_split, char **env);
 void pars_cmd_3(char **cmd_split, char **env);
+void ft_double_free (char **str);
 
 
 #endif
