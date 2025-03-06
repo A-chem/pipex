@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:48:17 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/06 15:15:59 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:24:42 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@
 
 typedef struct s_data
 {
-	int	fd[2];
-	int	fd_in;
-	int	fd_out;
-	int	i;
-}		t_data; 
+	int		fd[2];
+	int		fd_in;
+	int		fd_out;
+	int		i;
+	char	**av;
+}			t_data;
 
 void	ft_putstr(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -39,7 +40,7 @@ void	ft_close(int fd);
 void	ft_dup2(int fd_src, int fd_dest);
 void	ft_wait(void);
 void	ft_here_doc(char **av, t_data *data);
-void	ft_process(char *cmd, char **env, bool cdt, t_data *data, char **av);
+void	ft_process(char *cmd, char **env, bool cdt, t_data *data);
 void	check_exec_cmd(char *cmd, char **env);
 int		ft_check_path_cmd(char *cmd);
 char	*ft_found_cmd(char *cmd, char **path);

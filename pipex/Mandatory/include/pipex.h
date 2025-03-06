@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 16:20:51 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/05 16:29:10 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/06 17:33:39 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_close(int fd);
 void	ft_pipe(t_data **data);
 pid_t	ft_fork(void);
 void	ft_wait(int pid);
-void	ft_unlink(char *str);
 void	check_exec_cmd(char *cmd, char **env);
 int		ft_check_path_cmd(char *cmd);
 char	*ft_found_cmd(char *cmd, char **path);

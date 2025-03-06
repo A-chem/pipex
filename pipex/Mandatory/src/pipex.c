@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 15:15:58 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/05 15:29:35 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/06 17:33:09 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	process_1(char **av, char **env, t_data *data)
 		perror(av[1]);
 		exit (1);
 	}
-	if (data->fd_in != -1 && av[1] != NULL && av[1][0] != '/')
-		ft_unlink(av[1]);
 	ft_dup2(data->fd_in, 0, data->fd[1]);
 	ft_close(data->fd_in);
 	ft_dup2(data->fd[1], 1, data->fd_in);
