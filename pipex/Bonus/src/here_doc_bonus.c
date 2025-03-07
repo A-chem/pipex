@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aammisse <aammisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:07:26 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/06 13:10:18 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/06 22:25:01 by aammisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,20 @@ void	ft_read_input(char **av, t_data *data)
 
 	limited = ft_strjoin(av[2], "\n");
 	if (!limited)
-		exit(1);
+		return ;
 	while (1)
 	{
 		str = get_next_line(0);
 		if (!str)
-			exit(1);
+		{
+			free(limited);
+			break ;
+		}
 		if (ft_strcmp(str, limited) == 0)
 		{
 			free(str);
 			free(limited);
-			exit(0);
+			break ;
 		}
 		len_s = ft_strlen(str);
 		write(data->fd[1], str, len_s);
@@ -50,11 +53,8 @@ void	ft_here_doc(char **av, t_data *data)
 		ft_read_input(av, data);
 		ft_close(data->fd[1]);
 	}
-	else
-	{
-		ft_close(data->fd[1]);
-		ft_dup2(data->fd[0], 0);
-		ft_close(data->fd[0]);
-		waitpid(child, NULL, 0);
-	}
+	ft_close(data->fd[1]);
+	ft_dup2(data->fd[0], 0);
+	ft_close(data->fd[0]);
+	waitpid(child, NULL, 0);
 }

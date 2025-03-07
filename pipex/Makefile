@@ -1,7 +1,7 @@
 NAME = pipex
 NAME_BONUS = pipex_bonus
 CC = cc
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror
 SRC = ./Mandatory/src/pipex.c  ./Mandatory/src/check_exec_cmd.c ./Mandatory/src/handle_error1.c ./Mandatory/src/handle_error2.c \
 		./Mandatory/utils/ft_strjoin.c ./Mandatory/utils/ft_strlen.c ./Mandatory/utils/ft_strncmp.c  \
 		./Mandatory/utils/fonction_utils.c ./Mandatory/utils/ft_split.c ./Mandatory/utils/ft_putstr.c \
@@ -68,3 +68,5 @@ fclean: clean
 	@echo "$(INFO_SIGN) $(YELLOW)Removing executables: $(NAME) and $(NAME_BONUS)$(RESET)"
 	@rm -f $(NAME) $(NAME_BONUS)
 	@echo "$(OK_SIGN) $(GREEN)Executables removed!$(RESET)"
+
+re: fclean all

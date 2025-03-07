@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fonction_utils_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aammisse <aammisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:05:48 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/06 14:06:24 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/06 22:16:22 by aammisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ void	pars_cmd_2(char **cmd_split, char **env)
 	{
 		perror(cmd_split[0]);
 		ft_double_free (cmd_split);
-		handle_errors("\n");
+		exit(1);
 	}
 	if (access(cmd_split[0], X_OK) == -1)
 	{
 		ft_putstr(cmd_split[0]);
 		ft_putstr(": Permission Denied");
 		ft_double_free (cmd_split);
-		handle_errors("\n");
+		exit(1);
 	}
 	if (execve(cmd_split[0], cmd_split, env) == -1)
 	{
@@ -66,15 +66,14 @@ void	pars_cmd_3(char **cmd_split, char **env)
 
 	path = ft_split(fet_path(env), ':');
 	if (!path)
-		return (ft_double_free (cmd_split),
-			ft_double_free(path), handle_errors("Error"));
+		return (ft_double_free (cmd_split), handle_errors("Error"));
 	path_cmd = ft_found_cmd(cmd_split[0], path);
 	if (!path_cmd)
 	{
 		ft_putstr(cmd_split[0]);
 		ft_putstr(": Command not found");
 		return (ft_double_free (cmd_split),
-			ft_double_free(path), free(path_cmd), handle_errors("\n"));
+			ft_double_free(path), handle_errors("\n"));
 	}
 	if (execve(path_cmd, cmd_split, env) == -1)
 		return (ft_double_free (cmd_split), ft_double_free(path),
