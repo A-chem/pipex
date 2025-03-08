@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 15:15:58 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/06 17:33:09 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/08 17:03:20 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	process_2(char **av, char **env, t_data *data)
 	if (data->fd_out == -1)
 	{
 		perror(av[4]);
+		ft_close(data->fd[0]);
 		exit (1);
 	}
 	ft_dup2(data->fd[0], 0, data->fd_out);
@@ -35,6 +36,7 @@ void	process_1(char **av, char **env, t_data *data)
 	if (data->fd_in == -1)
 	{
 		perror(av[1]);
+		ft_close(data->fd[1]);
 		exit (1);
 	}
 	ft_dup2(data->fd_in, 0, data->fd[1]);
@@ -61,9 +63,13 @@ void	pipex(char **av, char **env, t_data *data)
 	ft_wait(child_1);
 	ft_wait(child_2);
 }
-
+void f()
+{
+	system ("lsof -c pipex");
+}
 int	main(int ac, char **av, char **env)
 {
+	atexit (f);
 	t_data	data;
 
 	if (ac != 5)

@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:01:59 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/06 16:25:48 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:59:46 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,19 @@ void	pipex(int ac, char **env, t_data *data)
 {
 	data->i = ft_open(1, ac, data);
 	while (++data->i < ac - 1)
-		ft_process(data->av[data->i], env, (data->i + 1 == ac - 1), data);
+		ft_process(data->av[data->i], env, (data->i + 1 == ac - 1), data);;
 	ft_close(data->fd_out);
 	while (waitpid(-1, NULL, 0) != -1)
 		;
 }
-
+void f()
+{
+	system ("lsof -c pipex_bonus");
+}
 int	main(int ac, char **av, char **env)
 {
+
+	atexit(f);
 	t_data	data;
 
 	data.av = av;
@@ -55,4 +60,5 @@ int	main(int ac, char **av, char **env)
 	if (!*env || !env)
 		handle_errors("Error: Invalid environment\n");
 	pipex(ac, env, &data);
+	
 }

@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:27:45 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/06 16:42:57 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:44:32 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static void	ft_handle_input_redirection(t_data *data)
 	if (data->fd_in == -1)
 	{
 		perror(data->av[1]);
+		ft_close(data->fd[1]);
+		ft_close (data->fd_out);
 		exit(1);
 	}
 	ft_dup2(data->fd_in, 0);

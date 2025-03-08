@@ -1,0 +1,21 @@
+COMMAND     PID     USER   FD   TYPE             DEVICE SIZE/OFF                NODE NAME
+pipex_bon 41555 achemlal  cwd    DIR               1,12      374             4376907 /mnt/homes/achemlal/Desktop/pipex
+pipex_bon 41555 achemlal  txt    REG               1,12    51800             4402173 /mnt/homes/achemlal/Desktop/pipex/pipex_bonus
+pipex_bon 41555 achemlal  txt    REG                1,7  1572480 1152921500312402812 /usr/lib/dyld
+pipex_bon 41555 achemlal    0   PIPE 0x5f2ad6f16df72623    16384                     ->0xf147cb8334cfe3af
+pipex_bon 41555 achemlal    1u   CHR               16,6 0t153943                 715 /dev/ttys006
+pipex_bon 41555 achemlal    2u   CHR               16,6 0t153943                 715 /dev/ttys006
+pipex_bon 41556 achemlal  cwd    DIR               1,12      374             4376907 /mnt/homes/achemlal/Desktop/pipex
+pipex_bon 41556 achemlal  txt    REG               1,12    51800             4402173 /mnt/homes/achemlal/Desktop/pipex/pipex_bonus
+pipex_bon 41556 achemlal  txt    REG                1,7  1572480 1152921500312402812 /usr/lib/dyld
+pipex_bon 41556 achemlal    0u   CHR               16,6 0t153943                 715 /dev/ttys006
+pipex_bon 41556 achemlal    1u   CHR               16,6 0t153943                 715 /dev/ttys006
+pipex_bon 41556 achemlal    2u   CHR               16,6 0t153943                 715 /dev/ttys006
+pipex_bon 41556 achemlal    3w   REG               1,12        0             4402152 /mnt/homes/achemlal/Desktop/pipex/outfilemake
+pipex_bon 41557 achemlal  cwd    DIR               1,12      374             4376907 /mnt/homes/achemlal/Desktop/pipex
+pipex_bon 41557 achemlal  txt    REG               1,12    51800             4402173 /mnt/homes/achemlal/Desktop/pipex/pipex_bonus
+pipex_bon 41557 achemlal  txt    REG                1,7  1572480 1152921500312402812 /usr/lib/dyld
+pipex_bon 41557 achemlal    0   PIPE 0x6499e630caa1dbb6    16384                     
+pipex_bon 41557 achemlal    1w   REG               1,12        0             4402152 /mnt/homes/achemlal/Desktop/pipex/outfilemake
+pipex_bon 41557 achemlal    2u   CHR               16,6 0t153943                 715 /dev/ttys006
+pipex_bon 41557 achemlal    5   PIPE 0xf147cb8334cfe3af    16384                     ->0x5f2ad6f16df72623

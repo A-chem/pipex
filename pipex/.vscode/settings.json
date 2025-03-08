@@ -2,7 +2,8 @@
   "files.associations": {
     "pipex_bonus.h": "c",
     "unistd.h": "c",
-    "pipex.h": "c"
+    "pipex.h": "c",
+    "algorithm": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "clang",
   "C_Cpp_Runner.cppCompilerPath": "clang++",
