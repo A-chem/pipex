@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:07:26 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/08 16:02:10 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:19:57 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_read_input(char **av, t_data *data)
 {
-	size_t	len_s;
 	char	*str;
 	char	*limited;
 
@@ -23,33 +22,28 @@ void	ft_read_input(char **av, t_data *data)
 		return ;
 	while (1)
 	{
+		write (1, "> ", 3);
 		str = get_next_line(0);
 		if (!str)
 		{
 			free(limited);
-			exit(0);
+			break ;
 		}
 		if (ft_strcmp(str, limited) == 0)
-			return (free(str), free(limited), ft_close (data->fd[1]), exit(0));
-		len_s = ft_strlen(str);
-		write(data->fd[1], str, len_s);
+		{
+			free(str);
+			free(limited);
+			break ;
+		}
+		write(data->fd[1], str, ft_strlen(str));
 		free(str);
 	}
 }
 
-void	ft_here_doc(char **av, t_data *data)
+int	ft_here_doc(t_data *data)	
 {
-	int	child;
-
-	ft_pipe(&data);
-	child = ft_fork();
-	if (child == 0)
-	{
-		ft_close(data->fd[0]);
-		ft_read_input(av, data);
-	}
-	ft_close(data->fd[1]);
-	ft_dup2(data->fd[0], 0);
-	ft_close(data->fd[0]);
-	waitpid(child, NULL, 0);
+	pipe(data->fd);
+	ft_read_input(data->av, data);
+	close(data->fd[1]);
+	return (data->fd[0]);
 }

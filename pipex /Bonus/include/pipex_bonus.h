@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:48:17 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/06 16:24:42 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/09 22:01:28 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ typedef struct s_data
 	int		fd_out;
 	int		i;
 	char	**av;
+	char	**env;
+	int 	ac;
+	int		fd_save;
+	int flag;
+	int fd_heredoc;
+	
 }			t_data;
 
 void	ft_putstr(const char *str);
@@ -39,8 +45,8 @@ pid_t	ft_fork(void);
 void	ft_close(int fd);
 void	ft_dup2(int fd_src, int fd_dest);
 void	ft_wait(void);
-void	ft_here_doc(char **av, t_data *data);
-void	ft_process(char *cmd, char **env, bool cdt, t_data *data);
+int	ft_here_doc(t_data *data);
+void    ft_child_proc(t_data *data);
 void	check_exec_cmd(char *cmd, char **env);
 int		ft_check_path_cmd(char *cmd);
 char	*ft_found_cmd(char *cmd, char **path);
@@ -50,5 +56,8 @@ void	pars_cmd_2(char **cmd_split, char **env);
 void	pars_cmd_3(char **cmd_split, char **env);
 void	handle_errors(char *str);
 void	ft_double_free(char **str);
+void	ft_first_cmd(t_data *data);
+void	ft_last_cmd(t_data *data);
+void	ft_child_processes(t_data *data);
 
 #endif
