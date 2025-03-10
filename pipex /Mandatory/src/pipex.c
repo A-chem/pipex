@@ -6,13 +6,13 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 15:15:58 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/08 17:03:20 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:44:27 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-void	process_2(char **av, char **env, t_data *data)
+static void	process_2(char **av, char **env, t_data *data)
 {
 	ft_close(data->fd[1]);
 	data->fd_out = open(av[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
@@ -29,7 +29,7 @@ void	process_2(char **av, char **env, t_data *data)
 	check_exec_cmd(av[3], env);
 }
 
-void	process_1(char **av, char **env, t_data *data)
+static void	process_1(char **av, char **env, t_data *data)
 {
 	ft_close(data->fd[0]);
 	data->fd_in = open(av[1], O_RDONLY);
@@ -46,7 +46,7 @@ void	process_1(char **av, char **env, t_data *data)
 	check_exec_cmd(av[2], env);
 }
 
-void	pipex(char **av, char **env, t_data *data)
+static void	pipex(char **av, char **env, t_data *data)
 {
 	pid_t	child_1;
 	pid_t	child_2;
@@ -63,13 +63,9 @@ void	pipex(char **av, char **env, t_data *data)
 	ft_wait(child_1);
 	ft_wait(child_2);
 }
-void f()
-{
-	system ("lsof -c pipex");
-}
+
 int	main(int ac, char **av, char **env)
 {
-	atexit (f);
 	t_data	data;
 
 	if (ac != 5)

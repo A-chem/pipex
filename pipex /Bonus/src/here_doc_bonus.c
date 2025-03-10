@@ -6,13 +6,13 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:07:26 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/09 23:19:57 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:46:23 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex_bonus.h"
 
-void	ft_read_input(char **av, t_data *data)
+static void	ft_read_input(char **av, t_data *data)
 {
 	char	*str;
 	char	*limited;
@@ -40,7 +40,7 @@ void	ft_read_input(char **av, t_data *data)
 	}
 }
 
-int	ft_here_doc(t_data *data)	
+int	ft_here_doc(t_data *data)
 {
 	pipe(data->fd);
 	ft_read_input(data->av, data);

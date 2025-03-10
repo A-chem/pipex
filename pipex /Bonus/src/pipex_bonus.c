@@ -6,15 +6,13 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:01:59 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/09 22:23:20 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:47:05 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex_bonus.h"
 
-
-
-void	ft_process(t_data *data)
+static void	ft_process(t_data *data)
 {
 	pid_t	pid;
 
@@ -28,12 +26,12 @@ void	ft_process(t_data *data)
 	close(data->fd_save);
 	data->fd_save = dup(data->fd[0]);
 	if (data->fd_save == -1)
-		handle_errors("Error");
+		handle_errors("Error\n");
 	close(data->fd[0]);
 	close(data->fd[1]);
 }
 
-void	pipex(t_data *data)
+static void	pipex(t_data *data)
 {
 	data->i = 2;
 	data->fd_save = -1;
@@ -49,19 +47,13 @@ void	pipex(t_data *data)
 	while (waitpid(-1, NULL, 0) != -1)
 		;
 }
-void f()
-{
-	system ("lsof -c pipex_bonus");
-}
 
 int	main(int ac, char **av, char **env)
 {
-	// atexit (f);
 	t_data	data;
 
 	data.av = av;
 	data.env = env;
-
 	if (ac < 5)
 		handle_errors("Error: Missing file or command arguments.");
 	if (!*env || !env)
@@ -78,6 +70,5 @@ int	main(int ac, char **av, char **env)
 		data.flag = 0;
 	}
 	pipex(&data);
-
 	return (0);
 }

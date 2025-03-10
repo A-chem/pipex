@@ -7,7 +7,7 @@ SRC = ./Mandatory/src/pipex.c  ./Mandatory/src/check_exec_cmd.c ./Mandatory/src/
 		./Mandatory/utils/fonction_utils.c ./Mandatory/utils/ft_split.c ./Mandatory/utils/ft_putstr.c \
 		
 OBJS = $(SRC:.c=.o)
-SRCS_BONUS =  ./Bonus/src/pipex_bonus.c ./Bonus/src/handle_error1_bonus.c ./Bonus/src/handle_error2_bonus.c  ./Bonus/src/check_exec_cmd_bonus.c \
+SRCS_BONUS =  ./Bonus/src/pipex_bonus.c ./Bonus/src/handle_error1_bonus.c  ./Bonus/src/check_exec_cmd_bonus.c \
 			./Bonus/src/here_doc_bonus.c ./Bonus/src/process_bonus.c \
 			./Bonus/utils/fonction_utils_bonus.c ./Bonus/utils/ft_strcmp_bonus.c ./Bonus/utils/ft_split_bonus.c  \
 			./Bonus/utils/ft_putstr_bonus.c ./Bonus/utils/ft_strncmp_bonus.c ./Bonus/utils/get_next_line_bonus.c ./Bonus/utils/get_next_line_utils_bonus.c
