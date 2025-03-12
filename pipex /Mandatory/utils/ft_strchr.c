@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_error2.c                                    :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 15:24:25 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/12 14:19:30 by achemlal         ###   ########.fr       */
+/*   Created: 2025/03/12 13:30:03 by achemlal          #+#    #+#             */
+/*   Updated: 2025/03/12 14:45:22 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-void	ft_wait(pid_t pid, t_data *data)
+char	*ft_strchr(char *s, int c)
 {
-	pid_t	terminated_pid;
+	int				i;
+	char			a;
 
-	terminated_pid = waitpid(pid, &data->status, 0);
-	if (terminated_pid == -1)
-		handle_errors ("waitpid failed");
+	a = (char) c;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == a)
+			return ((char *) &s[i]);
+		i++;
+	}
+	if (s[i] == a)
+		return ((char *) &s[i]);
+	return (NULL);
 }

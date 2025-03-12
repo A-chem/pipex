@@ -1,0 +1,26 @@
+COMMAND     PID     USER   FD   TYPE             DEVICE SIZE/OFF                NODE NAME
+pipex_bon 80546 achemlal  cwd    DIR                1,9      408             4497154 /mnt/homes/achemlal/Desktop/11/pipex 
+pipex_bon 80546 achemlal  txt    REG                1,9    51608             4510873 /mnt/homes/achemlal/Desktop/11/pipex /pipex_bonus
+pipex_bon 80546 achemlal  txt    REG                1,4  1572480 1152921500312412841 /usr/lib/dyld
+pipex_bon 80546 achemlal    0u   CHR               16,5 0t800225                 697 /dev/ttys005
+pipex_bon 80546 achemlal    1u   CHR               16,5 0t800225                 697 /dev/ttys005
+pipex_bon 80546 achemlal    2u   CHR               16,5 0t800225                 697 /dev/ttys005
+pipex_bon 80547 achemlal  cwd    DIR                1,9      408             4497154 /mnt/homes/achemlal/Desktop/11/pipex 
+pipex_bon 80547 achemlal  txt    REG                1,9    51608             4510873 /mnt/homes/achemlal/Desktop/11/pipex /pipex_bonus
+pipex_bon 80547 achemlal  txt    REG                1,4  1572480 1152921500312412841 /usr/lib/dyld
+pipex_bon 80547 achemlal    0r   REG                1,9        0             4497205 /mnt/homes/achemlal/Desktop/11/pipex /infile
+pipex_bon 80547 achemlal    1   PIPE 0x567d84ba56546a02    16384                     ->0x4e02d70f0ec53e2f
+pipex_bon 80547 achemlal    2u   CHR               16,5 0t800225                 697 /dev/ttys005
+pipex_bon 80548 achemlal  cwd    DIR                1,9      408             4497154 /mnt/homes/achemlal/Desktop/11/pipex 
+pipex_bon 80548 achemlal  txt    REG                1,9    51608             4510873 /mnt/homes/achemlal/Desktop/11/pipex /pipex_bonus
+pipex_bon 80548 achemlal  txt    REG                1,4  1572480 1152921500312412841 /usr/lib/dyld
+pipex_bon 80548 achemlal    0   PIPE 0x4e02d70f0ec53e2f    16384                     ->0x567d84ba56546a02
+pipex_bon 80548 achemlal    1   PIPE  0x7463c691b6d929b    16384                     ->0x86dcbe8838956fdb
+pipex_bon 80548 achemlal    2u   CHR               16,5 0t800225                 697 /dev/ttys005
+pipex_bon 80549 achemlal  cwd    DIR                1,9      408             4497154 /mnt/homes/achemlal/Desktop/11/pipex 
+pipex_bon 80549 achemlal  txt    REG                1,9    51608             4510873 /mnt/homes/achemlal/Desktop/11/pipex /pipex_bonus
+pipex_bon 80549 achemlal  txt    REG                1,4  1572480 1152921500312412841 /usr/lib/dyld
+pipex_bon 80549 achemlal    0   PIPE 0x86dcbe8838956fdb    16384                     ->0x7463c691b6d929b
+pipex_bon 80549 achemlal    1w   REG                1,9        0             4510867 /mnt/homes/achemlal/Desktop/11/pipex /make
+pipex_bon 80549 achemlal    2u   CHR               16,5 0t800225                 697 /dev/ttys005
+pipex_bon 80549 achemlal    4   PIPE 0xf16bb243a6ee7108    16384                     

@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:01:59 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/09 23:47:05 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:04:27 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	ft_process(t_data *data)
 {
+
 	pid_t	pid;
 
 	if (pipe(data->fd) == -1)
@@ -23,12 +24,13 @@ static void	ft_process(t_data *data)
 		handle_errors("Fork  Failed\n");
 	if (pid == 0)
 		ft_child_processes(data);
-	close(data->fd_save);
+	if(data->fd_save != -1)
+		ft_close(data->fd_save);
 	data->fd_save = dup(data->fd[0]);
 	if (data->fd_save == -1)
 		handle_errors("Error\n");
-	close(data->fd[0]);
-	close(data->fd[1]);
+	ft_close(data->fd[0]);
+	ft_close(data->fd[1]);
 }
 
 static void	pipex(t_data *data)
@@ -42,7 +44,7 @@ static void	pipex(t_data *data)
 		ft_process(data);
 		data->i++;
 	}
-	close(data->fd_save);
+	ft_close(data->fd_save);
 	close(data->fd_in);
 	while (waitpid(-1, NULL, 0) != -1)
 		;
@@ -55,9 +57,9 @@ int	main(int ac, char **av, char **env)
 	data.av = av;
 	data.env = env;
 	if (ac < 5)
-		handle_errors("Error: Missing file or command arguments.");
+		handle_errors("Error: Missing file or command arguments.\n");
 	if (!*env || !env)
-		handle_errors("Error empty environment");
+		handle_errors("Error empty environment\n");
 	if (!ft_strncmp(av[1], "here_doc", 9))
 	{
 		data.ac = ac;

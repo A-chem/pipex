@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_error2.c                                    :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 15:24:25 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/12 14:19:30 by achemlal         ###   ########.fr       */
+/*   Created: 2025/03/12 13:29:20 by achemlal          #+#    #+#             */
+/*   Updated: 2025/03/12 14:45:35 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-void	ft_wait(pid_t pid, t_data *data)
+char	*ft_strtrim(char *s1, char *set)
 {
-	pid_t	terminated_pid;
+	char	*ptr;
+	size_t	start;
+	size_t	end;
+	size_t	i;
 
-	terminated_pid = waitpid(pid, &data->status, 0);
-	if (terminated_pid == -1)
-		handle_errors ("waitpid failed");
+	start = 0;
+	if (!s1 || !set)
+		return (NULL);
+	end = ft_strlen(s1);
+	i = 0;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	while (end > start && ft_strchr(set, s1[end - 1]))
+		end--;
+	ptr = (char *)malloc(end - start + 1);
+	if (!ptr)
+		return (NULL);
+	while (start < end)
+		ptr[i++] = s1[start++];
+	ptr[i] = 0;
+	return (ptr);
 }

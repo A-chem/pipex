@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 15:30:04 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/09 23:44:50 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:41:05 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,21 @@ char	*ft_found_cmd(char *cmd, char **path)
 	return (NULL);
 }
 
-void	check_exec_cmd(char *cmd, char **env)
+int	check_exec_cmd(char *cmd, char **env)
 {
 	char	**cmd_split;
 
 	cmd_split = ft_split(cmd, ' ');
-	pars_cmd_1(cmd);
 	if (ft_check_path_cmd(cmd) == 1)
-		pars_cmd_2(cmd_split, env);
+	{
+		if (pars_cmd_2(cmd_split, env) == -1)
+			return (-1);
+	}
 	else
-		pars_cmd_3(cmd_split, env);
+	{
+		if (pars_cmd_3(cmd_split, env) == -1)
+			return (-1);
+	}
 	ft_double_free(cmd_split);
+	return (1);
 }

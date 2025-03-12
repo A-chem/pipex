@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:48:17 by achemlal          #+#    #+#             */
-/*   Updated: 2025/03/09 23:47:37 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:54:39 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_data
 void	ft_putstr(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strcmp(char *s1, char *s2);
+char	*ft_strtrim(char *s1, char *set);
 char	**ft_split(char *s, char c);
 void	ft_close(int fd);
 int		ft_here_doc(t_data *data);
